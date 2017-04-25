@@ -1,0 +1,27 @@
+{
+  "name": "nmea-miniplex",
+  "version": "0.0.1",
+  "description": "Decode NMEA-0183 messages from the Miniplex3-N2K.",
+  "main": "index.js",
+  "dependencies": {
+    "serialport": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Moki38/nmea-miniplex.git"
+  },
+  "keywords": [
+    "pi",
+    "nmea-0183",
+    "N2K",
+    "miniplex"
+  ],
+  "author": {
+    "name": "Eric van Dijken"
+  },
+  "license": "MIT"
+}
