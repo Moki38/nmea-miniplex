@@ -1,9 +1,11 @@
 {
   "name": "nmea-miniplex",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Decode NMEA-0183 messages from the Miniplex3-N2K.",
   "main": "index.js",
   "dependencies": {
+    "bmp085": ">=0.4.0",
+    "htu21d-i2c": ">=0.1.0",
     "serialport": "*"
   },
   "devDependencies": {},

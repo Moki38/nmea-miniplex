@@ -5,6 +5,19 @@ var lineReader = require('readline').createInterface({
 });
 
 lineReader.on('line', function (line) {
-  console.log(nmea.parse(line));
+  d = nmea.parse(line.toString());
+  if (d) {
+    sentence = d.sentence;
+    switch(sentence) {
+      case 'DPT':
+                console.log("Depth: "+line);
+                console.log(d);
+                break;
+      case 'ZDA':
+                console.log("ZDA: "+line);
+                break;
+    }
+//    console.log(d);
+  }
 });
 

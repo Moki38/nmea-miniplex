@@ -108,7 +108,7 @@ exports.encoders[VTG.TYPE] = VTG;
 exports.encoders[XDR.TYPE] = XDR;
 
 exports.parse = function (line) {
-  console.log(line);
+//  console.log(line);
   if (validLine(line)) {
     var fields = line.split('*')[0].split(','),
       talker_id,
@@ -120,7 +120,7 @@ exports.parse = function (line) {
       talker_id = fields[0].substr(1, 2);
       msg_fmt = fields[0].substr(3);
     }
-    console.log("msg_fmt: "+msg_fmt);
+//    console.log("msg_fmt: "+msg_fmt);
 
     var parser = exports.traditionalDecoders[msg_fmt];
     if (parser) {

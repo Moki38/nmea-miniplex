@@ -47,8 +47,7 @@ client.on('data', function(line) {
     case 'MWV':
                 nmeadata.wind_speed = d.speed;
                 nmeadata.app_wind_angle = d.angle;
-                nmeadata.true_wind_angle = (nmeadata.app_wind_angle + nmeadata.h
-eading) % 360;
+                nmeadata.true_wind_angle = (nmeadata.app_wind_angle + nmeadata.heading) % 360;
 
                 if ((nmeadata.true_wind_angle >= 348.75) && (nmeadata.true_wind_angle < 11.25)) nmeadata.true_wind_dir = 'N';
                 if ((nmeadata.true_wind_angle >= 11.25) && (nmeadata.true_wind_angle < 33.75)) nmeadata.true_wind_dir = 'NNE';

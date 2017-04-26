@@ -18,11 +18,13 @@ $--ZDA,hhmmss.ss,xx,xx,xxxx,xx,xx*hh
   return {
     sentence: exports.ID,
     type: exports.TYPE,
-    minutes : fields[1],
-    hours : fields[2],
-    Year : +fields[3],
-    Month : fields[4],
-    Day : fields[5],
-    Time : fields[6]
+    hours : fields[1].substring(0,2),
+    minutes : fields[1].substring(2,4),
+    seconds : fields[1].substring(4,6),
+    milliseconds : fields[1].split('.')[1],
+    Day : fields[2],
+    Month : +fields[3],
+    Year : fields[4],
+    UTC : fields[5]
   }
 }
