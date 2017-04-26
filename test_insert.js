@@ -12,7 +12,7 @@ var bmp085 = require('bmp085');
 var barometer = new bmp085({address: 0x77, 'device': options.device});
 
 var i2c_htu21d = require('htu21d-i2c');
-var htu21d = new i2c_htu21d({device: '/dev/i2c-1'});
+var htu21d = new i2c_htu21d({address: 0x47, device: '/dev/i2c-1'});
 
 // SerialPort.list(function (err, ports) {
 //   ports.forEach(function(port) {
@@ -47,7 +47,7 @@ var read_htu21d = setInterval(function () {
       nmeadata.mbar = Math.floor(data.pressure*10)/10;
     });
 
-    client.write(nmea.encode('MDA',d));
+    client.write(nmea.encode('WI', {type:"meteo", id:"MDA"} ));
 }, 3000);
 
 client.on('error', function(ex) {
