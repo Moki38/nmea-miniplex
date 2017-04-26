@@ -56,7 +56,13 @@ client.on('data', function(line) {
                   nmeadata.depth_belowsurface = d.depth;
                   nmeadata.depth_belowkeel = d.depth + d.offset;
                   nmeadata.depth_belowtransducer = d.depth + d.offset + 0.3;
-                  
+
+                  var d = nmea.encode('SD', {type:"depth", id:"DBT", depthFeet: MetersToFeet(nmeadata.depth_belowtransducer), depthMeters: nmeadata.depth_belowtransducer, depthFathoms: MetersToFathom(nmeadata.depth_belowtransducer)} );
+                  client.write(d);
+                  var d = nmea.encode('SD', {type:"depth", id:"DBK", depthFeet: MetersToFeet(nmeadata.depth_belowkeel), depthMeters: nmeadata.depth_belowkeel, depthFathoms: MetersToFathom(nmeadata.depth_belowkeel)} );
+                  client.write(d);
+                  var d = nmea.encode('SD', {type:"depth", id:"DBS", depthFeet: MetersToFeet(nmeadata.depth_belowsurface), depthMeters: nmeadata.depth_belowsurface, depthFathoms: MetersToFathom(nmeadata.depth_belowsurface)} );
+                  client.write(d);
                   break;
       default:
 //                  console.log(d);

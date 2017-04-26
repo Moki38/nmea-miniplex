@@ -3,6 +3,9 @@
 var APB = require('./codecs/APB.js')
 var BWC = require('./codecs/BWC.js')
 var DBT = require('./codecs/DBT.js')
+var DPK = require('./codecs/DPK.js')
+var DPS = require('./codecs/DPS.js')
+var DPT = require('./codecs/DPT.js')
 var DPT = require('./codecs/DPT.js')
 var FEC = require('./codecs/FEC.js')
 var GBS = require('./codecs/GBS.js')
@@ -55,6 +58,8 @@ exports.traditionalDecoders = {
   APB: APB.decode,
   BWC: BWC.decode,
   DBT: DBT.decode,
+  DPK: DPK.decode,
+  DPS: DPS.decode,
   DPT: DPT.decode,
   FEC: FEC.decode,
   GBS: GBS.decode,
