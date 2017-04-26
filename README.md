@@ -2,7 +2,9 @@
 
 # NMEA Miniplex3-N2K
 
-Decode NMEA-0183 messages from the Miniplex3-N2K.
+Decode NMEA-0183 messages from the Miniplex3-N2K, using serial or tcp connections.
+
+Please check that "STN Sentence" and "TAG Blocks" are DISABLED.
 
 ### Example code for
 
