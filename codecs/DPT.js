@@ -1,9 +1,9 @@
 exports.ID = 'DPT';
-exports.TYPE = 'heading';
+exports.TYPE = 'depth';
 
 exports.decode = function(fields) {
   /*
-DPT Heading – Deviation & Variation
+DPT Depth – Depth & Offset
  1 2 3
  | | |
 $--DPT,x.x,x.x*hh

@@ -4,6 +4,14 @@ var nmea = require('./index.js');
 //SerialPort = require('serialport');
 var net = require('net');
 
+var mbarToInch = function(m) {
+  if(typeof m !== "number") {
+    return "invalid input";
+  } else {
+    return m * 0.000295299830714;
+  }
+};
+
 var options = {
         address: '0x47',
         device: '/dev/i2c-1',
@@ -40,14 +48,15 @@ var read_htu21d = setInterval(function () {
     htu21d.readTemperature(function (temp) {
       nmeadata.temp = Math.floor(temp*10)/10;
     });
-    htu21d.readHumidity(function (hum) {
-      nmeadata.humidity = Math.floor(hum*10)/10;
-    });
     barometer.read(function (data) {
       nmeadata.mbar = Math.floor(data.pressure*10)/10;
     });
+    htu21d.readHumidity(function (hum) {
+      nmeadata.humidity = Math.floor(hum*10)/10;
+    });
 
-    client.write(nmea.encode('WI', {type:"meteo", id:"MDA"} ));
+    var d = nmea.encode('WI', {type:"meteo", id:"MDA",baro_bar: nmeadata.mbar, baro_inch: mbarToInch(nmeadata.mbar),air_temp: nmeadata.temp, abs_hum: nmeadata.humidity} );
+    client.write(d);
 }, 3000);
 
 client.on('error', function(ex) {
