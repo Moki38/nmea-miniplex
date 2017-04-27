@@ -44,18 +44,21 @@ var client = net.connect({port: 10110},
 //                parser: Serialport.parsers.readline('\r\n')});
 //                parser: SerialPort.parsers.raw});
 
-var read_htu21d = setInterval(function () {
+var read_sensor = setInterval(function () {
     htu21d.readTemperature(function (temp) {
       nmeadata.temp = Math.floor(temp*10)/10;
     });
     barometer.read(function (data) {
       nmeadata.mbar = Math.floor(data.pressure*10)/10;
     });
-    htu21d.readHumidity(function (hum) {
-      nmeadata.humidity = Math.floor(hum*10)/10;
-    });
+//    htu21d.readHumidity(function (hum) {
+//      nmeadata.humidity = Math.floor(hum*10)/10;
+//    });
+
+    console.log(nmeadata);
 
     var d = nmea.encode('WI', {type:"meteo", id:"MDA",baro_bar: nmeadata.mbar, baro_inch: mbarToInch(nmeadata.mbar),air_temp: nmeadata.temp, abs_hum: nmeadata.humidity} );
+    console.log(d);
     client.write(d);
 }, 3000);
 
